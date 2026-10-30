@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caesar Cipher & Hash (SHA)</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrap">
+            <h1>موقع التشفير وفك التشفير (Caesar) + حساب Hash</h1>
+            <p>استخدم القسم الأول لـ Caesar، والقسم الثاني لـ Hash (SHA-256 / SHA-512).</p>
+        </div>
+    </header>
+
+    <main class="wrap grid">
+        <!-- Caesar -->
+        <section class="card">
+            <h2 class="card-title">1) Caesar Cipher</h2>
+            <p class="muted">
+                يعمل على حروف الإنجليزي فقط (A-Z / a-z). يبقى أي رمز/مسافة كما هي.
+            </p>
+
+            <label class="label" for="caesarInput">النص:</label>
+            <textarea id="caesarInput" placeholder="مثال: HELLO"></textarea>
+
+            <div class="row">
+                <div class="col">
+                    <label class="label" for="caesarShift">Shift (مفتاح الإزاحة):</label>
+                    <input id="caesarShift" type="number" value="3" />
+                </div>
+                <div class="col">
+                    <label class="label" for="caesarMode">النتيجة:</label>
+                    <select id="caesarMode">
+                        <option value="encrypt" selected>تشفير</option>
+                        <option value="decrypt">فك تشفير</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="btn-row">
+                <button class="primary" onclick="runCaesar()">تنفيذ</button>
+                <button class="ghost" onclick="swapExample('caesar')">مثال جاهز</button>
+            </div>
+
+            <label class="label" for="caesarOutput">الناتج:</label>
+            <textarea id="caesarOutput" readonly></textarea>
+
+            <div class="hint">
+                فك التشفير يتم بالاتجاه العكسي لنفس قيمة الـ Shift.
+            </div>
+        </section>
+
+        <!-- Hash -->
+        <section class="card">
+            <h2 class="card-title">2) Hash (SHA)</h2>
+            <p class="muted">
+                الـ Hash أحادي الاتجاه: لا يوجد “فك تشفير”.
+                تقدر فقط تقارن الهاش الناتج.
+            </p>
+
+            <label class="label" for="hashInput">النص المراد حساب هاشه:</label>
+            <textarea id="hashInput" placeholder="مثال: hello"></textarea>
+
+            <div class="row">
+                <div class="col">
+                    <label class="label" for="hashAlgo">اختر الخوارزمية:</label>
+                    <select id="hashAlgo">
+                        <option value="SHA-256" selected>SHA-256</option>
+                        <option value="SHA-512">SHA-512</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="label" for="hashFormat">صيغة الإخراج:</label>
+                    <select id="hashFormat">
+                        <option value="hex" selected>Hex</option>
+                        <option value="base64">Base64</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="btn-row">
+                <button class="primary" onclick="runHash()">احسب Hash</button>
+                <button class="ghost" onclick="swapExample('hash')">مثال جاهز</button>
+            </div>
+
+            <label class="label" for="hashOutput">Hash الناتج:</label>
+            <textarea id="hashOutput" readonly></textarea>
+
+            <div class="hint">
+                كل مرة تدخل نفس النص وبنفس الخوارزمية راح يطلع نفس الهاش.
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <span>© مشروع تخرج — Caesar Cipher + Hash (SHA)</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
